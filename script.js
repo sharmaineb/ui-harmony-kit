@@ -16,10 +16,16 @@ document.addEventListener("DOMContentLoaded", function () {
           transition: transform 0.5s ease-in-out; 
         }
 
+        .slider-container {
+          max-width: 600px;
+          margin: 20px auto;
+        }
+
         .slide {
           flex: 0 0 100%;
           overflow: hidden;
         }
+
       </style>
       <div class="slider"></div>
     `;
@@ -71,12 +77,12 @@ document.addEventListener("DOMContentLoaded", function () {
           /* specific to the shadow DOM */
           :host {
             display: inline-block;
-            width: 100%; /* Added to make the button take up the full width */
+            width: 100%; 
           }
 
           button {
             padding: 10px 20px;
-            background-color: #3498db;
+            background-color: #83adb5;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -85,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
             justify-content: center;
             align-items: center;
             width: 100%; 
+            font-size: 1em;
           }
 
           button:hover {
@@ -96,8 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // attach event listeners
       this.shadowRoot.querySelector("button").addEventListener("click", () => {
-        alert("Custom button clicked!");
-        // add more later
+        alert("✨ Yay!! Custom button clicked! Hope You Have a Good Holiday, Mitchell!! 🎉");
       });
     }
 }
@@ -117,23 +123,31 @@ class MyAccordion extends HTMLElement {
         /* specific to the shadow DOM */
         .accordion-item {
           border: 1px solid #ddd;
+          border-radius: 10px;
+          padding: 10px; 
           margin-bottom: 5px;
           margin-top: 15px;
           display: flex;
           flex-direction: column;
           align-items: center;
+          color: #000;
         }
 
         .accordion-header {
           padding: 10px;
-          background-color: #f1f1f1;
+          background-color: #fceee9;
+          border-radius: 7px;
           cursor: pointer;
           margin-top: 15px;
+          margin-bottom: 10px;
+          font-size: 1em;
         }
 
         .accordion-content {
           padding: 10px;
           display: none;
+          text-align: center;
+          font-size: 1.3em;
         }
 
         .accordion-item.active .accordion-content {

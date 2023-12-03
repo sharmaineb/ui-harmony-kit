@@ -4,17 +4,15 @@
   margin: 20px auto;
 }
 
-.slider {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-}
-
-.slide {
-  flex: 0 0 100%;
+body {
+  background-color: #a3b899;
 }
 
 h1 {
   text-align: center;
+  color: #f8d3c5;
+  font-size: 3em;
+  text-shadow: 2px 2px 2px black;
 }
+
   
