@@ -193,7 +193,3 @@ class MyAccordion extends HTMLElement {
 
 customElements.define("my-accordion", MyAccordion);
 });
-
-  
-  
-  
