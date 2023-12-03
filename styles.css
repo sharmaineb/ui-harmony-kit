@@ -14,29 +14,6 @@
   flex: 0 0 100%;
 }
 
-/*  */
-
-/* accordion component */
-.accordion-item {
-  border: 1px solid #ddd;
-  margin-bottom: 5px;
-}
-
-.accordion-header {
-  padding: 10px;
-  background-color: #f1f1f1;
-  cursor: pointer;
-}
-
-.accordion-content {
-  padding: 10px;
-  display: none;
-}
-
-.accordion-item.active .accordion-content {
-  display: block;
-}
-
 h1 {
   text-align: center;
 }
