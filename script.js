@@ -42,12 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const image = new Image();
         image.src = imageUrls[currentIndex];
 
-        // customize later
         image.style.width = "100%";
         image.style.height = "auto";
 
         slide.appendChild(image);
-        sliderContainer.innerHTML = ""; // Clear existing content
+        sliderContainer.innerHTML = ""; 
         sliderContainer.appendChild(slide);
 
         // increment index for the next image
