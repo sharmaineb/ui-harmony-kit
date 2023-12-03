@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // images 
       const sliderContainer = shadow.querySelector(".slider");
-      const imageUrls = ["imgs/image1.jpg", "imgs/image2.jpg", "imgs/image3.jpg", "imgs/image4.jpg"];
+      const imageUrls = ["imgs/image1.jpg", "imgs/image2.jpg", "imgs/image3.jpg", "imgs/image4.jpg", "imgs/image5.jpg"];
       let currentIndex = 0;
 
       function updateSlider() {
@@ -68,9 +68,10 @@ document.addEventListener("DOMContentLoaded", function () {
       // HTML structure inside the shadow root
       shadow.innerHTML = `
         <style>
-          /* Styles specific to the shadow DOM */
+          /* specific to the shadow DOM */
           :host {
             display: inline-block;
+            width: 100%; /* Added to make the button take up the full width */
           }
 
           button {
@@ -80,6 +81,10 @@ document.addEventListener("DOMContentLoaded", function () {
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%; 
           }
 
           button:hover {
@@ -95,88 +100,88 @@ document.addEventListener("DOMContentLoaded", function () {
         // add more later
       });
     }
-  }
+}
 
-  customElements.define("my-button", MyButton);
+customElements.define("my-button", MyButton);
 
-  // accordion component
-  class MyAccordion extends HTMLElement {
-    constructor() {
-      super();
+// accordion component
+class MyAccordion extends HTMLElement {
+  constructor() {
+    super();
 
-      const shadow = this.attachShadow({ mode: "open" });
+    const shadow = this.attachShadow({ mode: "open" });
 
-      // HTML structure inside the shadow root
-      shadow.innerHTML = `
-        <style>
-          /* Styles specific to the shadow DOM */
-          .accordion-item {
-            border: 1px solid #ddd;
-            margin-bottom: 5px;
-          }
-
-          .accordion-header {
-            padding: 10px;
-            background-color: #f1f1f1;
-            cursor: pointer;
-          }
-
-          .accordion-content {
-            padding: 10px;
-            display: none;
-          }
-
-          .accordion-item.active .accordion-content {
-            display: block;
-          }
-        </style>
-        <div class="accordion">
-          <slot></slot>
-        </div>
-      `;
-
-      // attach event listeners
-      const accordion = this.shadowRoot.querySelector(".accordion");
-      accordion.addEventListener("click", (event) => {
-        const header = event.target.closest(".accordion-header");
-        if (header) {
-          const item = header.parentElement;
-          item.classList.toggle("active");
-
-          const content = item.querySelector(".accordion-content");
-          if (item.classList.contains("active")) {
-            content.style.display = "block";
-          } else {
-            content.style.display = "none";
-          }
+    // HTML structure inside the shadow root
+    shadow.innerHTML = `
+      <style>
+        /* specific to the shadow DOM */
+        .accordion-item {
+          border: 1px solid #ddd;
+          margin-bottom: 5px;
+          margin-top: 15px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
-      });
-    }
-  }
 
-  customElements.define("my-accordion", MyAccordion);
+        .accordion-header {
+          padding: 10px;
+          background-color: #f1f1f1;
+          cursor: pointer;
+          margin-top: 15px;
+        }
 
-  // accordion item component
-  class MyAccordionItem extends HTMLElement {
-    constructor() {
-      super();
+        .accordion-content {
+          padding: 10px;
+          display: none;
+        }
 
-      const shadow = this.attachShadow({ mode: "open" });
-
-      // HTML structure inside the shadow root
-      shadow.innerHTML = `
-        <style>
-          /* Styles specific to the shadow DOM */
-        </style>
+        .accordion-item.active .accordion-content {
+          display: block;
+        }
+      </style>
+      <div class="accordion">
         <div class="accordion-item">
-          <div class="accordion-header"><slot name="header"></slot></div>
-          <div class="accordion-content"><slot name="content"></slot></div>
+          <div class="accordion-header">Click For Accordian Introduction</div>
+          <div class="accordion-content">Accordions are useful when you want to toggle between hiding and showing a large amount of content.</div>
         </div>
-      `;
-    }
-  }
+        <div class="accordion-item">
+          <div class="accordion-header">Conserve Space</div>
+          <div class="accordion-content">
+            Accordions are particularly useful when dealing with a large amount of content on a webpage. By initially hiding content and only revealing 
+            it when a user chooses to interact with a specific section, accordions help conserve space on the screen. This is especially important in 
+            responsive design or on mobile devices where screen real estate is limited. Users can focus on the content that is relevant to them without 
+            feeling overwhelmed by information overload.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Enhances User Experience</div>
+          <div class="accordion-content">
+            Accordions improve the user experience by presenting information in a more organized and digestible manner. 
+            Users can navigate through different sections of content without being overwhelmed by a lengthy page. The ability to expand and collapse 
+            sections at will allows users to focus on the information they find most relevant. This interactive approach enhances engagement and provides 
+            a more user-friendly experience, especially for pages with complex or detailed information.
+          </div>
+        </div>
+        <slot></slot>
+      </div>
+    `;
 
-  customElements.define("my-accordion-item", MyAccordionItem);
+    // attach event listeners
+    const accordion = this.shadowRoot.querySelector(".accordion");
+    accordion.addEventListener("click", (event) => {
+      const item = event.target.closest(".accordion-item");
+      if (item) {
+        item.classList.toggle("active");
+      }
+    });
+  }
+}
+
+customElements.define("my-accordion", MyAccordion);
+
+
+
 });
 
   
